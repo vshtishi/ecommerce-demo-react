@@ -19,7 +19,16 @@ const Nav = () => {
           <FaBars />
         </button>
       </div>
-      <ul className='nav-links'></ul>
+      <ul className='nav-links'>
+        {links.map((link) => {
+          const { id, text, url } = link
+          return (
+            <li key={id}>
+              <Link to={url}>{text}</Link>
+            </li>
+          )
+        })}
+      </ul>
     </NavContainer>
   )
 }
@@ -40,7 +49,7 @@ const NavContainer = styled.nav`
     align-items: center;
     justify-content: space-between;
     img {
-      width: 175px;
+      width: 300px;
       margin-left: -15px;
     }
   }
