@@ -29,6 +29,7 @@ const Nav = () => {
           )
         })}
       </ul>
+      <CartButtons />
     </NavContainer>
   )
 }
