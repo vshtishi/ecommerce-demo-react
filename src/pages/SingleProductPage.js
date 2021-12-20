@@ -52,7 +52,7 @@ const SingleProductPage = () => {
           back to products
         </Link>
         <div className='product-center'>
-          <ProductImages />
+          <ProductImages image={image} />
           <section className='content'>
             <h2>{title}</h2>
             <Stars />

@@ -1,8 +1,22 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import extra1 from '../assets/extra_img1.jpg'
+import extra2 from '../assets/extra_img2.jpeg'
+import extra3 from '../assets/extra_img3.jpg'
+import extra4 from '../assets/extra_img4.jpg'
 
-const ProductImages = () => {
-  return <h4>product images</h4>
+const ProductImages = ({ image }) => {
+  const [images, setImages] = useState([extra1, extra2, extra3, extra4])
+  return (
+    <Wrapper>
+      <img src={image} alt='main image' className='main' />
+      <div className='gallery'>
+        {images.map((x, i) => (
+          <img src={x} key={i} />
+        ))}
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
