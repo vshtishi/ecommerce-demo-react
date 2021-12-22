@@ -46,8 +46,6 @@ export const ProductsProvider = ({ children }) => {
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR })
     }
-    const response = await axios.get(url)
-    console.log(response)
   }
 
   const fetchSingleProduct = async (url) => {

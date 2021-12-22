@@ -26,7 +26,6 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`)
-    console.log(product)
   }, [id])
 
   useEffect(() => {
@@ -43,7 +42,14 @@ const SingleProductPage = () => {
     return <Error />
   }
 
-  const { title, price, description, rating, id: sk, image } = product
+  const {
+    title,
+    price,
+    description,
+    rating: { count, rate } = { count: 0, rate: 0 },
+    id: sk,
+    image,
+  } = product
   return (
     <Wrapper>
       <PageHero title={title} product />
@@ -55,7 +61,7 @@ const SingleProductPage = () => {
           <ProductImages image={image} />
           <section className='content'>
             <h2>{title}</h2>
-            <Stars />
+            <Stars stars={rate} reviews={count} />
             <h5 className='price'>${price}</h5>
             <p className='desc'>{description}</p>
             <p className='info'>
