@@ -2,8 +2,47 @@ import React from 'react'
 import { useFilterContext } from '../context/filter_context'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
 import styled from 'styled-components'
+import { GiWaterDivinerStick } from 'react-icons/gi'
+import { products_url } from '../utils/helpers'
 const Sort = () => {
-  return <h4>sort </h4>
+  const {
+    filtered_products: products,
+    grid_view,
+    setListView,
+    setGridView,
+  } = useFilterContext()
+  return (
+    <Wrapper>
+      <div>
+        <button
+          className={`${grid_view ? 'active' : null}`}
+          onClick={setGridView}
+        >
+          <BsFillGridFill />
+        </button>
+        <button
+          type='button'
+          type='button'
+          className='btn-container'
+          className={`${grid_view ? null : 'active'}`}
+          onClick={setListView}
+        >
+          <BsList />
+        </button>
+      </div>
+      <p>{products.length} products found</p>
+      <hr />
+      <form>
+        <label htmlFor='sort'>sort by</label>
+        <select name='sort' id='sort'>
+          <option value='price-lowest'>price (lowest)</option>
+          <option value='price-highest'>price (highest)</option>
+          <option value='name-a'>name (a-z)</option>
+          <option value='name-z'>name (z-a)</option>
+        </select>
+      </form>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
