@@ -17,6 +17,12 @@ const initialState = {
   all_products: [],
   grid_view: true,
   sort: 'price-lowest',
+  filters: {
+    text: '',
+    min_price: 0,
+    max_price: 0,
+    price: 0,
+  },
 }
 
 const FilterContext = React.createContext()
@@ -48,12 +54,22 @@ export const FilterProvider = ({ children }) => {
   }, [products, state.sort])
   return (
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, updateSort }}
+      value={{
+        ...state,
+        setGridView,
+        setListView,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </FilterContext.Provider>
   )
 }
+
+const updateFilters = (e) => {}
+const clearFilters = () => {}
 // make sure use
 export const useFilterContext = () => {
   return useContext(FilterContext)

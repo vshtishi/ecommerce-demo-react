@@ -7,7 +7,18 @@ import Loading from './Loading'
 import Product from './Product'
 
 const FeaturedProducts = () => {
-  return <h4>featured products</h4>
+  const {
+    filters: {
+      text,
+      min_price, max_price
+    },
+    updateFilters,
+    clearFilters,
+    all_products
+  }
+  return <Wrapper><div className="content"><form onSubmit={(e)=> e.preventDefault()}>
+    <div className="form-control"><input type="text" name='text' placeholder='search' className='search-input' value={text} onChange={updateFilters} /></div>
+    </form></div></Wrapper>
 }
 
 const Wrapper = styled.section`
