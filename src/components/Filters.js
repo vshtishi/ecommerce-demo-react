@@ -5,20 +5,33 @@ import styled from 'styled-components'
 import Error from './Error'
 import Loading from './Loading'
 import Product from './Product'
+import { useFilterContext } from '../context/filter_context'
 
 const FeaturedProducts = () => {
   const {
-    filters: {
-      text,
-      min_price, max_price
-    },
+    filters: { text, min_price, max_price },
     updateFilters,
     clearFilters,
-    all_products
-  }
-  return <Wrapper><div className="content"><form onSubmit={(e)=> e.preventDefault()}>
-    <div className="form-control"><input type="text" name='text' placeholder='search' className='search-input' value={text} onChange={updateFilters} /></div>
-    </form></div></Wrapper>
+    all_products,
+  } = useFilterContext()
+  return (
+    <Wrapper>
+      <div className='content'>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className='form-control'>
+            <input
+              type='text'
+              name='text'
+              placeholder='search'
+              className='search-input'
+              value={text}
+              onChange={updateFilters}
+            />
+          </div>
+        </form>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
