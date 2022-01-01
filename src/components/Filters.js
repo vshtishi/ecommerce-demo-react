@@ -9,7 +9,7 @@ import { useFilterContext } from '../context/filter_context'
 
 const FeaturedProducts = () => {
   const {
-    filters: { text, min_price, max_price },
+    filters: { text, min_price, max_price, price },
     updateFilters,
     clearFilters,
     all_products,
@@ -29,6 +29,18 @@ const FeaturedProducts = () => {
             />
           </div>
         </form>
+        <div className='form-control'>
+          <h5>price</h5>
+          <p className='price'>${price}</p>
+          <input
+            type='range'
+            name='price'
+            onChange={updateFilters}
+            min={min_price}
+            max={max_price}
+            value={price}
+          />
+        </div>
       </div>
     </Wrapper>
   )
