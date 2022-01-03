@@ -9,6 +9,19 @@ import {
 const cart_reducer = (state, action) => {
   if (action.type === ADD_TO_CART) {
     const { id, amount, product } = action.payload
+    const tempItem = state.cart.find((i) => i.id === id)
+
+    if (tempItem) {
+      const tempCart = state.cart.map((cartItem) => {
+        if (cartItem.id === id) {
+          let newAmount = cartItem.amount + amount
+          return { ...cartItem, amount: newAmount }
+        }
+        return { ...cartItem }
+      })
+
+      return { ...state, cart: tempCart }
+    }
     const newItem = {
       id,
       title: product.title,
