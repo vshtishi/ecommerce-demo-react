@@ -19,7 +19,7 @@ const getLocalStorage = () => {
 }
 
 const initialState = {
-  cart: [],
+  cart: getLocalStorage(),
   total_items: 0,
   total_amount: 0,
 }
@@ -36,6 +36,10 @@ export const CartProvider = ({ children }) => {
   const removeItem = (id) => {}
   const toggleAmount = (id, value) => {}
   const clearCart = () => {}
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(state.cart))
+  }, [state.cart])
   return (
     <CartContext.Provider
       value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}

@@ -4,8 +4,35 @@ import { formatPrice } from '../utils/helpers'
 import AmountButtons from './AmountButtons'
 import { FaTrash } from 'react-icons/fa'
 import { useCartContext } from '../context/cart_context'
-const CartItem = () => {
-  return <h4>cart item</h4>
+const CartItem = ({ id, image, title, price, amount }) => {
+  const { removeItem, toggleAmount } = useCartContext()
+  const increase = () => {}
+  const decrease = () => {}
+
+  return (
+    <Wrapper>
+      <div className='title'>
+        <img src={image} alt={title} />
+        <div>
+          <h5 className='name'>{title}</h5>
+          <p className='color'>
+            color : <span style={{ background: 'black' }}></span>
+          </p>
+          <h5 className='price-small'>${price}</h5>
+        </div>
+      </div>
+      <h5 className='price'>${price}</h5>
+      <AmountButtons amount={amount} increase={increase} decrease={decrease} />
+      <h5 className='subtotal'>${price * amount}</h5>
+      <button
+        type='button'
+        className='remove-btn'
+        onClick={() => removeItem(id)}
+      >
+        <FaTrash />
+      </button>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.article`
