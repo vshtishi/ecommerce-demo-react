@@ -21,10 +21,10 @@ const Hero = () => {
           show now
         </Link>
       </article>
-      <aricle className='img-container'>
+      <article className='img-container'>
         <img src={heroBcg} alt='power tech' className='main-img' />
         <img src={heroBcg2} alt='power tech' className='accent-img' />
-      </aricle>
+      </article>
     </Wrapper>
   )
 }
