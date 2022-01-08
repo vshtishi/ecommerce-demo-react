@@ -6,6 +6,7 @@ import { formatPrice } from '../utils/helpers'
 import { Link } from 'react-router-dom'
 
 const CartTotals = () => {
+  const { myUser, loginWithRedirect } = useUserContext()
   const { total_amount } = useCartContext()
   return (
     <Wrapper>
@@ -22,9 +23,15 @@ const CartTotals = () => {
             order total : <span>${total_amount}</span>
           </h4>
         </article>
-        <Link to='/checkout' className='btn'>
-          proceed to checkout
-        </Link>
+        {myUser ? (
+          <Link to='/checkout' className='btn'>
+            proceed to checkout
+          </Link>
+        ) : (
+          <button className='btn' type='button' onClick={loginWithRedirect}>
+            login
+          </button>
+        )}
       </div>
     </Wrapper>
   )
