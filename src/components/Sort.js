@@ -2,8 +2,6 @@ import React from 'react'
 import { useFilterContext } from '../context/filter_context'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
 import styled from 'styled-components'
-import { GiWaterDivinerStick } from 'react-icons/gi'
-import { products_url } from '../utils/helpers'
 const Sort = () => {
   const {
     filtered_products: products,
@@ -24,8 +22,6 @@ const Sort = () => {
         </button>
         <button
           type='button'
-          type='button'
-          className='btn-container'
           className={`${grid_view ? null : 'active'}`}
           onClick={setListView}
         >

@@ -7,15 +7,16 @@ import extra4 from '../assets/extra_img4.jpg'
 
 const ProductImages = ({ image }) => {
   const [main, setMain] = useState(image)
-  const [images, setImages] = useState([image, extra1, extra2, extra3, extra4])
+  const [images] = useState([image, extra1, extra2, extra3, extra4])
   return (
     <Wrapper>
-      <img src={main} alt='main image' className='main' />
+      <img src={main} alt='main' className='main' />
       <div className='gallery'>
         {images.map((x, i) => (
           <img
             src={x}
             key={i}
+            alt='product'
             onClick={() => setMain(x)}
             className={`${x === main ? 'active' : null}`}
           />

@@ -8,7 +8,7 @@ const AboutPage = () => {
     <main>
       <PageHero title='About' />
       <Wrapper className='page section section-center'>
-        <img src={aboutImg} />
+        <img src={aboutImg} alt='about' />
         <article>
           <div className='title'>
             <h2>About us</h2>
