@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const stripe = require('sripe')(process.env.REACT_APP_STRIPE_SECRET_KEY)
+const stripe = require('stripe')(process.env.REACT_APP_STRIPE_SECRET_KEY)
 
 exports.handler = async function (event, context) {
   //check if POST
@@ -12,10 +12,20 @@ exports.handler = async function (event, context) {
     }
 
     try {
-      const paymentIntent = await stripe.pamentIntents.create({
+      const paymentIntent = await stripe.paymentIntents.create({
         amount: getOrderAmount(),
+        currency: 'usd',
       })
-    } catch (error) {}
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ clientSecret: paymentIntent.client_secret }),
+      }
+    } catch (error) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: error.message }),
+      }
+    }
 
     return {
       statusCode: 200,
