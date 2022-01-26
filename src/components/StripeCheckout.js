@@ -17,7 +17,7 @@ const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
 const CheckoutForm = () => {
   const { cart, total_amount, clearCart } = useCartContext()
   const { myUser } = useUserContext()
-  const history = useNavigate()
+  const navigate = useNavigate()
 
   const [succeeded, setSucceeded] = useState(false)
   const [error, setError] = useState(null)
@@ -78,6 +78,10 @@ const CheckoutForm = () => {
       setError(null)
       setProcessing(false)
       setSucceeded(true)
+      clearCart()
+      setTimeout(() => {
+        navigate('/')
+      }, 10000)
     }
   }
 
