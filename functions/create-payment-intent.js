@@ -8,7 +8,7 @@ exports.handler = async function (event, context) {
     const { cart, total_amount } = JSON.parse(event.body)
 
     const getOrderAmount = () => {
-      return total_amount
+      return total_amount * 100 //cent conversion
     }
 
     try {
